@@ -80,8 +80,3 @@ php -S localhost:8000
 
 E acesse `http://localhost:8000`.
 
-## Possíveis melhorias (ideias para evoluir o projeto)
-
-- Paginação da listagem
-- Editar tarefas com drag-and-drop entre colunas (estilo Kanban)
-- Deploy com Docker (PHP + MySQL em containers)
