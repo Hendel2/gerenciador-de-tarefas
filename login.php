@@ -1,0 +1,76 @@
+<?php
+require 'config/database.php';
+require 'config/auth.php';
+
+if (usuarioLogado()) {
+    header('Location: index.php');
+    exit;
+}
+
+$erro = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $email = trim($_POST['email']);
+    $senha = $_POST['senha'];
+
+    if ($email == '' || $senha == '') {
+        $erro = 'Preencha e-mail e senha.';
+    } else {
+        $stmt = $pdo->prepare('SELECT id, nome, senha_hash FROM usuarios WHERE email = ?');
+        $stmt->execute([$email]);
+        $usuario = $stmt->fetch();
+
+        if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
+            $_SESSION['usuario_id'] = $usuario['id'];
+            $_SESSION['usuario_nome'] = $usuario['nome'];
+            header('Location: index.php');
+            exit;
+        } else {
+            $erro = 'E-mail ou senha inválidos.';
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar — TaskFlow</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="auth-body">
+
+<main class="auth-page">
+    <div class="auth-card">
+        <div class="auth-card__brand">
+            <span class="topbar__logo">✓</span>
+            <h1>TaskFlow</h1>
+        </div>
+        <p class="auth-card__subtitulo">Entre para gerenciar suas tarefas</p>
+
+        <?php if ($erro != '') { ?>
+            <p class="auth-erro"><?= htmlspecialchars($erro) ?></p>
+        <?php } ?>
+
+        <form method="post" class="auth-form">
+            <label>
+                E-mail
+                <input type="email" name="email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required autofocus>
+            </label>
+
+            <label>
+                Senha
+                <input type="password" name="senha" required>
+            </label>
+
+            <button type="submit" class="btn btn--primary">Entrar</button>
+        </form>
+
+        <p class="auth-card__rodape">Ainda não tem conta? <a href="cadastro.php">Cadastre-se</a></p>
+    </div>
+</main>
+
+</body>
+</html>
