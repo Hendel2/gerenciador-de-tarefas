@@ -42,13 +42,9 @@ body {
 
 .topbar__logo {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: 36px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    font-weight: bold;
 }
 
 .topbar h1 {
@@ -400,11 +396,6 @@ body {
     align-items: center;
     gap: 12px;
     margin-bottom: 4px;
-}
-
-.auth-card__brand .topbar__logo {
-    background: var(--primary);
-    color: #fff;
 }
 
 .auth-card__brand h1 {

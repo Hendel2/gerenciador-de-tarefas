@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Entrar — TaskFlow</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="auth-body">
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <main class="auth-page">
     <div class="auth-card">
         <div class="auth-card__brand">
-            <span class="topbar__logo">✓</span>
+            <img src="assets/img/logo.svg" alt="TaskFlow" class="topbar__logo">
             <h1>TaskFlow</h1>
         </div>
         <p class="auth-card__subtitulo">Entre para gerenciar suas tarefas</p>

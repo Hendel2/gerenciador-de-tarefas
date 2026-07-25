@@ -8,13 +8,14 @@ exigirLogin();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TaskFlow — Gerenciador de Tarefas</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header class="topbar">
     <div class="topbar__brand">
-        <span class="topbar__logo">✓</span>
+        <img src="assets/img/logo.svg" alt="TaskFlow" class="topbar__logo">
         <h1>TaskFlow</h1>
     </div>
     <div class="topbar__acoes">
